@@ -5,15 +5,18 @@ export const Route = createRootRoute({
     component: () => (
         <>
             <div className="p-2 flex gap-2">
-                <Link to="/" className="[&.active]:font-bold">
+            &nbsp;<Link to="/" className="[&.active]:font-bold">
                     Home
-                </Link>{' '}
+                </Link>&nbsp;|&nbsp;
                 <Link to="/customEffect" className="[&.active]:font-bold">
                     Custom useEffect
-                </Link>
+                </Link>&nbsp;|&nbsp;
                 <Link to="/customMemo" className="[&.active]:font-bold">
                     Custom useMemo
-                </Link>
+                </Link>&nbsp;|&emsp;
+                <Link to="/customUseThrottle" className="[&.active]:font-bold">
+                    useThrottle
+                </Link>&nbsp;|&emsp;
             </div>
             <hr />
             <Outlet />

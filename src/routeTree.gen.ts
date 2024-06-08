@@ -13,6 +13,7 @@ import { createFileRoute } from '@tanstack/react-router'
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
+import { Route as CustomUseThrottleImport } from './routes/customUseThrottle'
 import { Route as CustomMemoImport } from './routes/customMemo'
 import { Route as CustomEffectImport } from './routes/customEffect'
 
@@ -21,6 +22,11 @@ import { Route as CustomEffectImport } from './routes/customEffect'
 const IndexLazyImport = createFileRoute('/')()
 
 // Create/Update Routes
+
+const CustomUseThrottleRoute = CustomUseThrottleImport.update({
+  path: '/customUseThrottle',
+  getParentRoute: () => rootRoute,
+} as any)
 
 const CustomMemoRoute = CustomMemoImport.update({
   path: '/customMemo',
@@ -62,6 +68,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CustomMemoImport
       parentRoute: typeof rootRoute
     }
+    '/customUseThrottle': {
+      id: '/customUseThrottle'
+      path: '/customUseThrottle'
+      fullPath: '/customUseThrottle'
+      preLoaderRoute: typeof CustomUseThrottleImport
+      parentRoute: typeof rootRoute
+    }
   }
 }
 
@@ -71,6 +84,7 @@ export const routeTree = rootRoute.addChildren({
   IndexLazyRoute,
   CustomEffectRoute,
   CustomMemoRoute,
+  CustomUseThrottleRoute,
 })
 
 /* prettier-ignore-end */
@@ -83,7 +97,8 @@ export const routeTree = rootRoute.addChildren({
       "children": [
         "/",
         "/customEffect",
-        "/customMemo"
+        "/customMemo",
+        "/customUseThrottle"
       ]
     },
     "/": {
@@ -94,6 +109,9 @@ export const routeTree = rootRoute.addChildren({
     },
     "/customMemo": {
       "filePath": "customMemo.jsx"
+    },
+    "/customUseThrottle": {
+      "filePath": "customUseThrottle.jsx"
     }
   }
 }

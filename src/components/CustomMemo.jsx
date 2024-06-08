@@ -23,7 +23,7 @@ const CustomMemo = () => {
             <h1 className='text-center font-bold text-2xl my-6'>Use Custom Memo</h1>
             <p className='text-center text-lg my-6'>Count: {count}</p>
             <p className='text-center text-lg text-orange-400 underline'>Squared Value: {squaredValue()}</p>
-            <CustomButton cb={increment}>Increment</CustomButton>
+            <CustomButton cb={increment} type='increment' />
         </div>
     )
 }
